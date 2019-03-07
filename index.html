@@ -246,7 +246,6 @@
                             ima_slovo = true;
                             document.querySelector("#span" + j).innerHTML = slovo;
                             broj_pogodjenih++;
-                            console.log(polja);
                             if(broj_pogodjenih == rec.length)
                                 pok.innerHTML = "Pogodili ste!";
                         }
@@ -267,7 +266,6 @@
                         if(ima_slovo == false){
                             brojac++;
                             document.querySelector("#vesala div:nth-child(" + brojac+")").style.display = "block";
-                            this.style.color = "white";
                         } 
                 }
             }
@@ -295,7 +293,6 @@
             polja.innerHTML = "";
             for(var i = 0; i < slova.length; i++){
             sme_slovo[i] = true;
-            slova[i].style.color = "lightblue";
             }
             polje();
             vesalo();
