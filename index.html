@@ -206,6 +206,7 @@
             }
         </style>
     </head>
+    
     <body>
         <div class="naslov">
             <h1>VEŠALA</h1>
@@ -266,6 +267,7 @@
                         if(ima_slovo == false){
                             brojac++;
                             document.querySelector("#vesala div:nth-child(" + brojac+")").style.display = "block";
+                            this.style.color = "white";
                         } 
                 }
             }
@@ -293,6 +295,7 @@
             polja.innerHTML = "";
             for(var i = 0; i < slova.length; i++){
             sme_slovo[i] = true;
+            slova[i].style.color = "lightblue";
             }
             polje();
             vesalo();
