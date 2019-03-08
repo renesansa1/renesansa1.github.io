@@ -224,84 +224,82 @@
     </body>
     <script>
      var rec, reci, slova, slovo, pok, sp, polja, pokusaj=10, sme_slovo=[], brojac=0, ima_slovo, nepogodjena;
-        var broj_pogodjenih = 0;
+     var broj_pogodjenih = 0;
 
-        reci = ["himalaji", "decembar", "proleće", "stradivari", "pravougaonik", "mimikrija", "koalicija", "putešestvije", "mančester"];
-        rec = reci[Math.floor(Math.random() * reci.length)];
-        slova = document.querySelectorAll("#slova div");
-        pok = document.querySelector(".pokusaji");
-        pok.innerHTML = "Imate "+pokusaj+" pokusaja";
-        nepogodjena=document.querySelector("#nepogodjena");
-        for(let i=0; i < slova.length; i++){
-            slova[i].onclick=function(){
-                slovo = this.innerHTML;
-                if(sme_slovo[i] == false){
-                    return;
-                }
-                sme_slovo[i] = false;
-                ima_slovo = false;
-                if (rec.indexOf(slovo) >= 0){
-                    for (var j = 0; j < rec.length; j++) {
-                        if (rec[j] == slovo && pokusaj > 0){
-                            ima_slovo = true;
-                            document.querySelector("#span" + j).innerHTML = slovo;
-                            broj_pogodjenih++;
-                            if(broj_pogodjenih == rec.length)
-                                pok.innerHTML = "Pogodili ste!";
-                        }
+    function igra(){
+    reci = ["himalaji", "decembar", "proleće", "stradivari", "pravougaonik", "mimikrija", "koalicija", "putešestvije", "mančester"];
+    rec = reci[Math.floor(Math.random() * reci.length)];
+    slova = document.querySelectorAll("#slova div");
+    pok = document.querySelector(".pokusaji");
+    pok.innerHTML = "Imate "+pokusaj+" pokusaja";
+    nepogodjena=document.querySelector("#nepogodjena");
+    for(let i=0; i < slova.length; i++){
+        sme_slovo[i] = true;
+        slova[i].onclick=function(){
+            slovo = this.innerHTML;
+            if(sme_slovo[i] == false){
+                return;
+            }
+            sme_slovo[i] = false;
+            ima_slovo = false;
+            if (rec.indexOf(slovo) >= 0){
+                for (var j = 0; j < rec.length; j++) {
+                    if (rec[j] == slovo && pokusaj > 0){
+                        ima_slovo = true;
+                        document.querySelector("#span" + j).innerHTML = slovo;
+                        broj_pogodjenih++;
+                        if(broj_pogodjenih == rec.length)
+                            pok.innerHTML = "Pogodili ste!";
                     }
                 }
-                else{
-                    if(pokusaj > 0){
-                        pokusaj--;
-                        pok.innerHTML="Imate "+ pokusaj +" pokusaja";
-                    }
-                        if(pokusaj<1){
-                            pok.innerHTML = "Promašili ste!";
-                            nepogodjena.style.visibility = "visible";
-                            nepogodjena.innerHTML = rec;
-                            nepogodjena.style.transitionDelay = "500ms";
-                        }
-                        
-                        if(ima_slovo == false){
-                            brojac++;
-                            document.querySelector("#vesala div:nth-child(" + brojac+")").style.display = "block";
-                        } 
+            }
+            else{
+                if(pokusaj > 0){
+                    pokusaj--;
+                    pok.innerHTML="Imate "+ pokusaj +" pokusaja";
                 }
+                    if(pokusaj<1){
+                        pok.innerHTML = "Promašili ste!";
+                        nepogodjena.style.visibility = "visible";
+                        nepogodjena.innerHTML = rec;
+                        nepogodjena.style.transitionDelay = "500ms";
+                    }
+                    if(ima_slovo == false){
+                        brojac++;
+                        document.querySelector("#vesala div:nth-child(" + brojac+")").style.display = "block";
+                    } 
             }
         }
-        function polje(){
-        polja = document.querySelector('.polja');
-            for(var j = 0; j < rec.length; j++){
-                sp = document.createElement("span");
-                sp.id = "span" + j;
-                sp.innerHTML = "_";
-                polja.appendChild(sp);
-            }
-            }
-            polje();
-
-        function vesalo(){
-            var divsVesala = document.querySelectorAll("#vesala div");
-            for(var i=0; i < divsVesala.length; i++){
-                divsVesala[i].style.display = "none"; 
-            }
+    }
+    function polje(){
+    polja = document.querySelector('.polja');
+    polja.innerHTML = "";
+        for(var j = 0; j < rec.length; j++){
+            sp = document.createElement("span");
+            sp.id = "span" + j;
+            sp.innerHTML = "_";
+            polja.appendChild(sp);
         }
+    }
+    polje();
         
-        function reset(){
-            rec = reci[Math.floor(Math.random() * reci.length)];
-            polja.innerHTML = "";
-            for(var i = 0; i < slova.length; i++){
-            sme_slovo[i] = true;
-            }
-            polje();
-            vesalo();
-            brojac = 0;
-            pokusaj = 10;
-            broj_pogodjenih = false;
-            pok.innerHTML = "Imate "+pokusaj+" pokusaja";
-            nepogodjena.style.visibility = "hidden";
+    function vesalo(){
+        var divsVesala = document.querySelectorAll("#vesala div");
+        for(var i=0; i < divsVesala.length; i++){
+            divsVesala[i].style.display = "none"; 
         }
-        document.getElementById("reset").onclick = reset;
+    }
+    vesalo();
+    }
+    igra();
+
+    function reset(){
+        brojac = 0;
+        pokusaj = 10;
+        broj_pogodjenih = false;
+        nepogodjena.style.visibility = "hidden";
+        igra();
+    }
+    document.getElementById("reset").onclick = reset;
     </script>
 </html>
