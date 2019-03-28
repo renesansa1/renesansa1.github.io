@@ -73,7 +73,7 @@
                 }
             #nepogodjena{
                 background: grey;
-                color: red;
+                color: blue;
                 font-size: 20px;
                 position: absolute;
                 letter-spacing: 4px;
@@ -318,6 +318,8 @@
     nepogodjena_rec=document.querySelector("#nepogodjena");
     function promasenaRec(){
         pok.innerHTML = "Promašili ste!";
+	pok.style.color = "red";
+	
         nepogodjena_rec.style.visibility = "visible";
         nepogodjena_rec.innerHTML = rec;
         nepogodjena_rec.style.transitionDelay = "500ms";
