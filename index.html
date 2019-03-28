@@ -73,7 +73,7 @@
                 }
             #nepogodjena{
                 background: grey;
-                color: blue;
+                color: lightblue;
                 font-size: 20px;
                 position: absolute;
                 letter-spacing: 4px;
@@ -209,24 +209,24 @@
                 width: 30px; 
                 line-height: 20px;
                 }
-		    .naslov{
+		.naslov{
                 font-size: 10px;
                 margin: 5px;
                 margin-bottom: 5px;
-            }
-            	    .podnaslov{
-		 font-size:15px;
-		 margin: 10px auto;
-            }
-		    .polja{
+            	}
+            	.podnaslov{
+		font-size:15px;
+		margin: 10px auto;
+            	}
+		.polja{
 		font-size: 20px;
                 margin: 5px auto;
-            }
-		    #nepogodjena{
+            	}
+		#nepogodjena{
 		margin: 0 auto;
 		left:5px;
 		bottom:5px;
-		    }
+		}
             }
         </style>
     </head>
@@ -316,8 +316,6 @@
     nepogodjena_rec=document.querySelector("#nepogodjena");
     function promasenaRec(){
         pok.innerHTML = "Promašili ste!";
-	pok.style.color = "red";
-	pok.style.fontSize = "15px";
         nepogodjena_rec.style.visibility = "visible";
         nepogodjena_rec.innerHTML = rec;
         nepogodjena_rec.style.transitionDelay = "500ms";
